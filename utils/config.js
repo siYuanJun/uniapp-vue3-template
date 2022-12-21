@@ -9,25 +9,16 @@ const buildStatus = 'prod'
 
 const apiConfig = {
   localhost: {
-    api: 'https://test.tikoplanet.com/acg',
-    webUrl: 'https://acg.tikoplanet.com',
-
-    // 二手市场站点域名
-    secondHandAuth: 'http://localhost:3000/views/user/authorization',
+    api: 'https://test.xxx.com/acg',
+    webUrl: 'https://acg.xxx.com',
   },
   development: {
-    api: 'https://test.tikoplanet.com/acg',
-    webUrl: 'https://acg.tikoplanet.com',
-
-    // 二手市场站点域名
-    secondHandAuth: 'https://acg-second-hand.tikoplanet.com/views/user/authorization',
+    api: 'https://test.xxx.com/acg',
+    webUrl: 'https://acg.xxx.com',
   },
   production: {
-    api: 'http://prevalent-special-edition.zmdna.com/acg',
-    webUrl: 'http://prevalent-special-edition.zmdna.com',
-
-    // 二手市场站点域名
-    secondHandAuth: 'https://acg-used.tikoplanet.com/views/user/authorization',
+    api: 'http://prevalent-special-edition.xxx.com/acg',
+    webUrl: 'http://prevalent-special-edition.xxx.com',
   },
 }
 
