@@ -1,0 +1,30 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  ---item-length: 2;
+  ---item-x: 15rpx;
+  ---item-y: 15rpx;
+
+  &.grid-col-3 {
+    ---item-length: 3;
+  }
+
+  &.grid-col-4 {
+    ---item-length: 4;
+  }
+
+  margin-left: calc(0.5 * var(---item-x) - var(---item-x));
+  margin-right: calc(0.5 * var(---item-x) - var(---item-x));
+
+  > view,
+  > div,
+  > a {
+    width: calc(100% / var(---item-length));
+    box-sizing: border-box;
+    margin-bottom: var(---item-y);
+    padding-left: calc(0.5 * var(---item-x));
+    padding-right: calc(0.5 * var(---item-x));
+  }
+}

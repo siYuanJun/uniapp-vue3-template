@@ -1,0 +1,17 @@
+{
+  "name": "tiko-acg-h5",
+  "version": "1.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "html2canvas": "^1.4.1",
+    "jweixin-module": "^1.6.0",
+    "qrcodejs2-fix": "^0.0.1"
+  }
+}

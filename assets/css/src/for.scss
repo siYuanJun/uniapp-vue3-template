@@ -1,0 +1,32 @@
+// 定义字体(rpx)单位，10-100的都为rpx单位字体
+@for $i from 10 through 100 {
+  .z-font-#{$i} {
+    font-size: $i + rpx;
+  }
+}
+
+@for $i from 0 through 150 {
+  // 只要双数和能被5除尽的数
+  @if $i % 2 == 0 or $i % 5 == 0 {
+    @each $short, $long in l left, t top, r right, b bottom {
+      // 缩写版，结果如： u-m-l-30
+      // 定义外边距
+      .z-m-#{$short}-#{$i} {
+        margin-#{$long}: $i + rpx !important;
+      }
+
+      .z-m-#{$i} {
+        margin: $i + rpx !important;
+      }
+
+      // 定义内边距
+      .z-p-#{$short}-#{$i} {
+        padding-#{$long}: $i + rpx !important;
+      }
+
+      .z-p-#{$i} {
+        padding: $i + rpx !important;
+      }
+    }
+  }
+}

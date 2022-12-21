@@ -1,0 +1,10 @@
+unpackage/cache
+unpackage/debug
+unpackage/dist
+unpackage/release
+.svn
+.huilderx
+.DS_Store
+.vite
+node_modules
+.vite

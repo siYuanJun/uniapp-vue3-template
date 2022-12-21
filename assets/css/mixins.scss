@@ -1,0 +1,104 @@
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin function-visible() {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin function-hidden() {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin box-shadow($alpha: 0.6, $blur-radius: 8px) {
+  box-shadow: rgba($black, $alpha) 0 0 $blur-radius;
+}
+
+@mixin font-class($fontFamily, $fontSize, $fontColor) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  color: $fontColor;
+}
+
+// medium, 18px, #333
+@mixin font-large($size: $font-size-title, $color: $font-light-color) {
+  @include font-class($font-family-medium, $size, $color);
+}
+
+// regular, 14px, #333
+@mixin font-normal($size: $font-size-normal, $color: $font-light-color) {
+  @include font-class($font-family-regular, $size, $color);
+}
+
+/// Adds a browser prefix to the property
+/// @param {*} $property Property
+/// @param {*} $value Value
+
+@mixin clamp($lines: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin visible() {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin hidden() {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin color-transition($time: $transition-time-fast) {
+  transition: color $time;
+}
+
+@mixin funciton-text-max($num: 1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+}
+
+// 慢动作动画
+@mixin function-transition-all-ease($sin: 0.3s) {
+  transition: all $sin cubic-bezier(0.82, 0.82, 0.82, 0.82) 0s;
+  -o-transition: all $sin cubic-bezier(0.82, 0.82, 0.82, 0.82) 0s;
+  -ms-transition: all $sin cubic-bezier(0.82, 0.82, 0.82, 0.82) 0s;
+  -moz-transition: all $sin cubic-bezier(0.82, 0.82, 0.82, 0.82) 0s;
+  -webkit-transition: all $sin cubic-bezier(0.82, 0.82, 0.82, 0.82) 0s;
+}
+
+// 放大旋转动画
+@mixin function-transform-scale-rotate($scale: 0.5, $rotate: 0deg) {
+  transform: scale($scale, $scale) rotate($rotate);
+  -ms-transform: scale($scale, $scale) rotate($rotate); /* Internet Explorer */
+  -moz-transform: scale($scale, $scale) rotate($rotate); /* Firefox */
+  -webkit-transform: scale($scale, $scale) rotate($rotate); /* Safari 和 Chrome */
+  -o-transform: scale($scale, $scale) rotate($rotate); /* Opera */
+}
+
+@mixin function-button($text-size: 16px) {
+  font-size: $text-size;
+  text-align: center;
+  display: flex;
+}
+
+@mixin function-text-linear($color1: #28e0cf, $color2: #2ebff4) {
+  background-image: -webkit-linear-gradient(top right, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: $color-themes-blue;
+}
