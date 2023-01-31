@@ -14,22 +14,23 @@ app.$mount()
 import { createSSRApp } from 'vue'
 import common from '@/utils/common.js'
 import config from '@/utils/config.js'
-import myMixin from '@/utils/mixinPublic.js'
-import store from './store'
+import mixinApp from '@/utils/mixinApp.js'
+import * as Pinia from 'pinia'
 
 export function createApp() {
   const app = createSSRApp(App)
 
-  app.config.globalProperties.$gs = {
+  app.config.globalProperties.$config = {
     ...config,
   }
 
   app.config.globalProperties.common = common
-  app.mixin(myMixin)
-  app.use(store)
+  app.mixin(mixinApp)
+  app.use(Pinia.createPinia())
 
   return {
     app,
+    Pinia,
   }
 }
 // #endif

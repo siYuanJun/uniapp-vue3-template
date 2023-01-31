@@ -1,4 +1,33 @@
 export default {
+  // ID元素属性获取
+  domExec(fieid) {
+    return new Promise(function (resolve, reject) {
+      let query = uni.createSelectorQuery()
+      query
+        .select('#' + fieid)
+        .boundingClientRect(function (res) {
+          resolve(res)
+        })
+        .exec()
+    })
+  },
+  openImage(url) {
+    uni.previewImage({
+      current: 0,
+      urls: [url],
+      success: (result) => {},
+      fail: () => {},
+      complete: () => {},
+    })
+  },
+  getStatusBarHeight(height) {
+    height = height || 44
+    console.log(uni.getSystemInfoSync().statusBarHeight, height)
+    return uni.getSystemInfoSync().statusBarHeight + height
+  },
+  navBack() {
+    uni.navigateBack({})
+  },
   sleep(delay) {
     var start = new Date().getTime()
     while (new Date().getTime() - start < delay) {
@@ -286,5 +315,53 @@ export default {
       .toString()
       .padStart(2, '0')
     return `${minutes}分${s}秒`
+  },
+
+  getHeadElement() {
+    return new Promise((resolve, reject) => {
+      uni.getSystemInfo({
+        success: function (e) {
+          let StatusBar = 0,
+            CustomBar = 0,
+            Custom = null
+
+          // #ifndef MP
+          StatusBar = e.statusBarHeight
+          if (e.platform == 'android') {
+            CustomBar = e.statusBarHeight + 50
+          } else {
+            CustomBar = e.statusBarHeight + 45
+          }
+          // #endif
+
+          // #ifdef MP-WEIXIN || MP-QQ
+          StatusBar = e.statusBarHeight
+          let capsule = uni.getMenuButtonBoundingClientRect()
+          if (capsule) {
+            Custom = capsule
+            // Vue.prototype.capsuleSafe = uni.upx2px(750) - capsule.left + uni.upx2px(750) - capsule.right;
+            CustomBar = capsule.bottom + capsule.top - e.statusBarHeight
+          } else {
+            CustomBar = e.statusBarHeight + 44
+          }
+          // #endif
+
+          // #ifdef MP-ALIPAY
+          StatusBar = e.statusBarHeight
+          CustomBar = e.statusBarHeight + e.titleBarHeight
+          // #endif
+
+          resolve({
+            StatusBar,
+            CustomBar,
+            Custom,
+          })
+        },
+      })
+    })
+  },
+  phoneVerification(phone) {
+    const myreg = /^[1][1,2,3,4,5,6,7,8,9][0-9]{9}$/
+    return !myreg.test(phone)
   },
 }
